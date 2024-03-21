@@ -1,0 +1,803 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    touch-action: manipulation;
+}
+
+@font-face {
+    font-family: 'Vintage';
+    /* Nombre de la fuente */
+    src: url('assets/fonts/Vintage-Goods.otf') format('opentype');
+    /* Ruta relativa a la carpeta styles.css */
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('assets/fonts/Bogart.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'GI';
+    src: url('assets/fonts/GlacialIndifference-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'GIB';
+    src: url('assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Usamos 100vw en lugar de 100% para cubrir toda la anchura de la ventana */
+    height: 100vh;
+    /* Usamos 100vh para cubrir toda la altura de la ventana */
+    background-image: url('assets/BG.jpg');
+    /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+h2 {
+    font-family: "Vintage", sans-serif;
+    color: goldenrod;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-family: "Bogart", sans-serif;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    font-size: 25px;
+    margin-top: 0;
+}
+
+.logo-zone {
+    height: 8%;
+}
+
+.name-zone {
+    height: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-zone1 {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-container {
+    width: 88%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.93);
+    border-radius: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-type-1 {
+    width: 20%;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.info-type-2 {
+    width: 33%;
+}
+
+.photos-button-container {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photos-button {
+    width: 45%;
+    height: 75%;
+    background-color: rgba(255, 255, 255, 0.93);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.photos-button img {
+    width: 23%;
+}
+
+.photos-button p {
+    font-family: 'Bogart';
+    font-size: 23px;
+    color: black;
+    margin-left: 15px;
+}
+
+.separador {
+    width: 100%;
+    height: 13%;
+}
+
+.info-zone2 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.data-price-container {
+    width: 100%;
+    height: 58%;
+}
+
+.add-button-container {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: -15px;
+}
+
+.price-section-1 {
+    width: 100%;
+    height: 25%;
+    background-color: rgba(0, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-section-1 p {
+    color: white;
+    font-family: 'Bogart';
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.price-section-2 {
+    width: 100%;
+    height: 75px;
+    background-color: rgba(0, 0, 0, 0.63);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    line-height: 80px;
+}
+
+.first-price-complements {
+    font-family: 'Bogart';
+    color: white;
+    font-size: 25px;
+    top: -10px;
+}
+
+.first-price {
+    font-family: 'Bogart';
+    color: white;
+    font-size: 45px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.add-button {
+    width: 46%;
+    height: 55%;
+    border: none;
+    background: none;
+    background-color: #BAED67;
+    border-radius: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button img {
+    width: 16%;
+}
+
+.add-button p {
+    font-size: 24px;
+    font-family: 'Bogart';
+    color: black;
+    margin-left: 10px;
+}
+
+.modalPhoto {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.closeModal {
+    border: none;
+    background: none;
+    width: 100%;
+    height: 44%;
+}
+
+.photoModalContent {
+    width: 100%;
+    height: 56%;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow-x: auto;
+    /* Agrega scroll horizontal */
+    white-space: nowrap;
+    /* Evita saltos de línea */
+    max-width: 100%;
+}
+
+.photoList {
+    /* Estilos para la lista de fotos */
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.photoList img {
+    /* Estilos para cada imagen */
+    width: 330px;
+    /* Ancho de cada imagen */
+    height: auto;
+    /* Altura automática */
+    margin-right: 10px;
+    /* Espacio entre imágenes */
+    border-radius: 20px;
+    margin-left: 15px;
+    margin-top: 25px;
+}
+
+.modal {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000ab;
+}
+
+.closeModal1 {
+    border: none;
+    background: none;
+    width: 100%;
+    height: 24%;
+}
+
+.modal1Content {
+    width: 100%;
+    height: 76%;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.titleZone {
+    width: 100%;
+    height: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modelZone {
+    width: 100%;
+    height: 63%;
+    display: flex;
+    flex-direction: row;
+}
+
+.titleZone1 {
+    font-family: 'Bogart';
+    font-size: 22px;
+    color: rgb(1, 2, 2);
+    font-weight: 600;
+}
+
+.titleZone2 {
+    font-family: 'Bogart';
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    margin-top: 2px;
+    font-weight: 600;
+}
+
+.modelHalf {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modelHalf2 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modelContainer1 {
+    width: 85%;
+    height: 70%;
+    border-radius: 25px;
+    background-image: linear-gradient(to right, #67759D, #11364D);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modelContainer2 {
+    width: 85%;
+    height: 70%;
+    border-radius: 25px;
+    background-image: linear-gradient(to right, #C8A595, #715140);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modelCounter {
+    width: 65%;
+    height: 13%;
+    background-color: rgba(26, 26, 26, 0.15);
+    margin-top: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.modelContainer1 img {
+    width: 100%;
+}
+
+.modelContainer2 img {
+    width: 100%;
+}
+
+.modelTitle {
+    color: rgb(55, 55, 55);
+    font-family: 'Bogart';
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.math {
+    height: 100%;
+    width: 30%;
+    border: none;
+    background: none;
+    font-family: 'Bogart';
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+}
+
+.number {
+    height: 100%;
+    width: 40%;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bogart';
+    font-size: 30px;
+}
+
+.priceAndConfirm {
+    width: 100%;
+    height: 13%;
+    background-color: #11364D;
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.PC1 {
+    height: 100%;
+    width: 60%;
+    border-right-color: rgba(255, 255, 255, 0.889);
+    border-right-width: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PC2 {
+    height: 100%;
+    width: 40%;
+    background: none;
+    border: none;
+    background-image: linear-gradient(to right, #11364D, #607c2f);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.PC2 p {
+    color: white;
+    font-family: 'Bogart';
+    font-size: 22px;
+    margin-right: 15px;
+}
+
+.dollarSign {
+    color: white;
+    font-size: 20px;
+    font-family: 'Bogart';
+}
+
+.secondPrice {
+    color: white;
+    font-size: 30px;
+    font-family: 'Bogart';
+    margin-left: 15px;
+}
+
+
+
+
+
+
+
+
+/* Modal 2 y final */
+.modal2 {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000088;
+}
+
+.closeModal2 {
+    width: 100%;
+    height: 24%;
+    border: none;
+    background: none;
+}
+
+.modal2Content {
+    width: 100%;
+    height: 76%;
+    background-color: #f9f9f9;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.resumen-pedido {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.resumen-pedido p {
+    font-family: 'GI';
+    color: white;
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+
+
+.firstResumee {
+    width: 100%;
+    height: 18%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.secondResumee {
+    width: 100%;
+    height: 18%;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.firstResumee p {
+    font-family: 'GIB';
+    font-size: 20px;
+    margin-left: 20px;
+    color: black;
+}
+
+/* Concepto en el resumen */
+
+.second-resumee-first-part {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.second-resumee-second-part {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-resumee-third-part {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.second-resumee-first-part p {
+    font-family: 'GI';
+    font-size: 18px;
+    color: black;
+    margin-left: 10px;
+}
+
+.second-resumee-second-part p {
+    font-family: 'GI';
+    font-size: 18px;
+    color: black;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.second-resumee-third-part p {
+    font-family: 'GI';
+    font-size: 23px;
+    color: black;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+.third-resumee-first-part {
+    height: 100%;
+    width: 17%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.third-resumee-second-part {
+    height: 100%;
+    width: 43%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.third-resumee-third-part {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.third-resumee-first-part p {
+    font-family: 'GI';
+    font-size: 20px;
+    color: #4C7B00;
+    margin-left: 10px;
+}
+
+.third-resumee-second-part p {
+    font-family: 'GI';
+    font-size: 18px;
+    color: #4C7B00;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.third-resumee-third-part p {
+    font-family: 'GI';
+    font-size: 23px;
+    color: #4C7B00;
+    margin-left: 10px;
+}
+
+
+
+
+.fourth-resumee-first-part {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+
+}
+
+.fourth-resumee-second-part {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fourth-resumee-third-part {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.fourth-resumee-first-part p {
+    font-family: 'GIB';
+    font-size: 20px;
+    color: black;
+    margin-left: 10px;
+}
+
+.fourth-resumee-second-part p {
+    font-family: 'GI';
+    font-size: 18px;
+    color: black;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.fourth-resumee-third-part p {
+    font-family: 'GI';
+    font-size: 23px;
+    color: black;
+    margin-left: 10px;
+}
+
+.form-button {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    width: 86%;
+    height: 60%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer p {
+    font-family: 'Bogart';
+    font-size: 19px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+input {
+    font-family: 'Bogart';
+    height: 25%;
+    text-align: center;
+    margin: 7px;
+    border-radius: 25px;
+    font-size: 20px;
+    padding-inline-start: 15px;
+    padding-inline-end: 15px;
+}
+
+.inputDireccion {
+    width: 95%;
+}
+
+.inputNombre:focus,
+.inputDireccion:focus {
+    border-color: #1285ff;
+    /* Cambiar color cuando el input está enfocado */
+}
+
+.final-btn-cont {
+    width: 86%;
+    height: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finalBtn {
+    border: none;
+    background: none;
+    width: 75%;
+    height: 80%;
+    background-color: #25D366;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.finalBtn img {
+    width: 10%;
+    margin: 10px;
+}
+
+.finalBtn p {
+    font-family: 'Bogart';
+    font-size: 25px;
+    color: black;
+    margin: 10px;
+}

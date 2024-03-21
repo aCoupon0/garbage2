@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aCoupon</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="background-image">
+        <div class="logo-zone">
+
+        </div>
+        <div class="name-zone">
+            <h2>Accesori</h2>
+            <h1>Gafas - Estilo Vintage</h2>
+        </div>
+
+
+
+        <div class="info-zone1">
+            <div class="info-container">
+                <img src="assets/info1.png" class="info-type-1">
+                <img src="assets/info2.png" class="info-type-2">
+                <img src="assets/info3.png" class="info-type-1">
+            </div>
+            <div class="photos-button-container">
+                <button class="photos-button" id="photos-button"
+                    onclick="document.getElementById('modalPhoto').style.display='block'">
+                    <img src="assets/camera.png" alt="">
+                    <p>Ver fotos</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+
+        <div class="info-zone2">
+            <div class="data-price-container">
+                <div class="price-section-1">
+                    <p>Pagos Contraentrega</p>
+                </div>
+                <div class="price-section-2">
+                    <p class="first-price-complements">$</p>
+                    <p class="first-price">39.000</p>
+                    <p class="first-price-complements">COP</p>
+                </div>
+            </div>
+
+
+            <div class="add-button-container">
+                <button class="add-button" onclick="document.getElementById('myModal').style.display='block'">
+                    <img src="assets/cart.png" alt="">
+                    <p>Comprar</p>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal Photo  -  Destinado a la visualizacion de las imagenes -->
+    <div id="modalPhoto" class="modalPhoto">
+        <button class="closeModal" onclick="document.getElementById('modalPhoto').style.display='none'"></button>
+        <div class="photoModalContent">
+            <div class="photoList">
+                <img src="assets/0.jpg" alt="Imagen 1">
+                <img src="assets/1.jpg" alt="Imagen 2">
+                <img src="assets/2.jpg" alt="Imagen 3">
+                <img src="assets/3.jpg" alt="Imagen 4">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Primer Modal  -  Destinado a la seleccion de cantidades -->
+    <div id="myModal" class="modal">
+        <button class="closeModal1" onclick="document.getElementById('myModal').style.display='none'"></button>
+        <div class="modal1Content">
+            <div class="titleZone">
+                <p class="titleZone1">Escoge cuantos de cada</p>
+                <p class="titleZone2">modelo</p>
+            </div>
+
+            <div class="modelZone">
+                <div class="modelHalf">
+                    <p class="modelTitle">Carey</p>
+                    <div class="modelContainer2">
+                        <img src="assets/careyModel.png" alt="">
+                    </div>
+                    <div class="modelCounter" id="carey">
+                        <button class="math" onclick="if(parseInt(document.getElementById('careyQuantity').innerHTML) > 0) { 
+                            document.getElementById('careyQuantity').innerHTML = parseInt(document.getElementById('careyQuantity').innerHTML) - 1; 
+                            document.getElementById('secondPrice').innerHTML = ((parseInt(document.getElementById('noirQuantity').innerHTML) + parseInt(document.getElementById('careyQuantity').innerHTML)) * 39000).toLocaleString();
+                        }">-</button>
+
+                        <!-- Div para mostrar la cantidad de carey -->
+                        <div class="number" id="careyQuantity">0</div>
+
+                        <!-- Botón Sumar con Actualización de secondPrice -->
+                        <button class="math"
+                            onclick="document.getElementById('careyQuantity').innerHTML = parseInt(document.getElementById('careyQuantity').innerHTML) + 1;
+                        document.getElementById('secondPrice').innerHTML = ((parseInt(document.getElementById('noirQuantity').innerHTML) + parseInt(document.getElementById('careyQuantity').innerHTML)) * 39000).toLocaleString();">+</button>
+                    </div>
+                </div>
+
+                <div class="modelHalf2">
+                    <p class="modelTitle">Noir</p>
+                    <div class="modelContainer1">
+                        <img src="assets/blackModel.png" alt="">
+                    </div>
+                    <div class="modelCounter" id="carey">
+                        <button class="math" onclick="if(parseInt(document.getElementById('noirQuantity').innerHTML) > 0) { 
+                            document.getElementById('noirQuantity').innerHTML = parseInt(document.getElementById('noirQuantity').innerHTML) - 1; 
+                            document.getElementById('secondPrice').innerHTML = ((parseInt(document.getElementById('noirQuantity').innerHTML) + parseInt(document.getElementById('careyQuantity').innerHTML)) * 39000).toLocaleString();
+                        }">-</button>
+                        <div class="number" id="noirQuantity">0</div>
+                        <button class="math"
+                            onclick="document.getElementById('noirQuantity').innerHTML = parseInt(document.getElementById('noirQuantity').innerHTML) + 1;
+document.getElementById('secondPrice').innerHTML = ((parseInt(document.getElementById('noirQuantity').innerHTML) + parseInt(document.getElementById('careyQuantity').innerHTML)) * 39000).toLocaleString();">+</button>
+                         
+                    </div>
+                </div>
+            </div>
+
+            <div class="priceAndConfirm">
+                <div class="PC1">
+                    <p class="dollarSign">$</p>
+                    <p class="secondPrice" id="secondPrice">0</p>
+                </div>
+                <button class="PC2" onclick="let noirQuantity = parseInt(document.getElementById('noirQuantity').innerHTML); let careyQuantity = parseInt(document.getElementById('careyQuantity').innerHTML); if (noirQuantity > 0 || careyQuantity > 0) { let totalQuantity = noirQuantity + careyQuantity; let preDeliveryPrice = totalQuantity * 39000; document.getElementById('finalQuantity').innerHTML = totalQuantity.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 }); document.getElementById('preDelivery-price').innerHTML = preDeliveryPrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); let deliveryCost = 3000 + (0.03 * preDeliveryPrice); deliveryCost = Math.floor(deliveryCost / 100) * 100; document.getElementById('deliveryPrice').innerHTML = deliveryCost.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); let totalPrice = deliveryCost + preDeliveryPrice; document.getElementById('totalPrice').innerHTML = totalPrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); document.getElementById('myModal2').style.display='block'; } else { alert('Debes seleccionar al menos uno'); }">
+                    <p>Siguiente</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Segundo Modal  -  Destinado a los datos y hacer el pedido -->
+    <div id="myModal2" class="modal2">
+        <button class="closeModal2" onclick="document.getElementById('myModal2').style.display='none'"></button>
+        <div class="modal2Content">
+            <div class="resumen-pedido">
+                <div class="firstResumee">
+                    <p>Resumen de tu pedido</p>
+                </div>
+                <div class="secondResumee">
+                    <div class="second-resumee-first-part">
+                        <p>Gafas Vintage x <span id="finalQuantity">0</span></p>
+                    </div>
+                    <div class="second-resumee-second-part">
+                        <p>.............</p>
+                    </div>
+                    <div class="second-resumee-third-part">
+                        <p id="preDelivery-price">0</p>
+                    </div>
+                </div>
+                <div class="secondResumee">
+                    <div class="third-resumee-first-part">
+                        <p>Envio</p>
+                    </div>
+                    <div class="third-resumee-second-part">
+                        <p>...............................</p>
+                    </div>
+                    <div class="third-resumee-third-part">
+                        <p id="deliveryPrice">0</p>
+                    </div>
+                </div>
+                <div class="secondResumee">
+                    <div class="fourth-resumee-first-part">
+                        <p>TOTAL</p>
+                    </div>
+                    <div class="fourth-resumee-second-part">
+                        <p>..............................</p>
+                    </div>
+                    <div class="fourth-resumee-third-part">
+                        <p id="totalPrice">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-button">
+                <div class="formContainer">
+                    <p>Ingresa tus datos, por favor</p>
+                    <input type="text" placeholder="Nombre" class="inputNombre" id="nameInput">
+                    <input type="text" placeholder="Dirección" class="inputDireccion" id="addressInput">
+                </div>
+                <div class="final-btn-cont">
+                    <button class="finalBtn">
+                        <img src="assets/waIMG.png" alt="">
+                        <p>Hacer pedido</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
